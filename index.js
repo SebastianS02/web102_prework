@@ -32,16 +32,16 @@ function addGamesToPage(games) {
     // loop over each item in the data
     for(let i = 0; i < games.length; i++){
         // create a new div element, which will become the game card
-        const gameCard = document.createElement("div");
+        const gameDiv = document.createElement("div");
         // add the class game-card to the list
-        gameCard.classList.add("game-card");
+        gameDiv.classList.add("game-card");
         // set the inner HTML using a template literal to display some info 
         // about each game
-        gameCard.innerHTML = `<img src="${games[i].img}" class="game-img" />
+        gameDiv.innerHTML = `<img src="${games[i].img}" class="game-img" />
         <h3>${games[i].name}</h3>
         <p>${games[i].description}</p>
         <p>Backers: ${games[i].backers}</p>`;
-        gamesContainer.appendChild(gameCard);
+        gamesContainer.appendChild(gameDiv);
     }
         // TIP: if your images are not displaying, make sure there is space
         // between the end of the src attribute and the end of the tag ("/>")
@@ -107,6 +107,7 @@ function filterUnfundedOnly() {
     });
 
     // use the function we previously created to add the unfunded games to the DOM
+    console.log(unfundedGames);
     addGamesToPage(unfundedGames);
 }
 
@@ -120,6 +121,7 @@ function filterFundedOnly() {
     });
 
     // use the function we previously created to add unfunded games to the DOM
+    console.log(fundedGames);
     addGamesToPage(fundedGames);
 }
 
