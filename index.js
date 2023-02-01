@@ -130,6 +130,7 @@ function showAllGames() {
     deleteChildElements(gamesContainer);
 
     // add all games from the JSON data to the DOM
+    console.log(GAMES_JSON);
     addGamesToPage(GAMES_JSON);
 }
 
