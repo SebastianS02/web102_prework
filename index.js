@@ -140,9 +140,9 @@ const fundedBtn = document.getElementById("funded-btn");
 const allBtn = document.getElementById("all-btn");
 
 // add event listeners with the correct functions to each button
-unfundedBtn.addEventListener("click", filterUnfundedOnly());
-fundedBtn.addEventListener("click", filterFundedOnly());
-allBtn.addEventListener("click", showAllGames());
+unfundedBtn.addEventListener("click", filterUnfundedOnly);
+fundedBtn.addEventListener("click", filterFundedOnly);
+allBtn.addEventListener("click", showAllGames);
 
 /*************************************************************************************
  * Challenge 6: Add more information at the top of the page about the company.
@@ -153,12 +153,19 @@ allBtn.addEventListener("click", showAllGames());
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
-
+let numUnfundedGames = GAMES_JSON.filter( (games) => {
+    return games.pledged < games.goal;
+});
 
 // create a string that explains the number of unfunded games using the ternary operator
-
+let unfundedGamesStr = `A total of $${raisedCount.toLocaleString("en-US")} has been raised for ${GAMES_JSON.length} games. 
+    Currently, ${numUnfundedGames.length} ${numUnfundedGames.length == 1 ? "game remains unfunded." : "games remain unfunded."} 
+    We need your help to fund these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
+const unfundedStat = document.createElement("p");
+unfundedStat.innerHTML = `${unfundedGamesStr}`;
+descriptionContainer.appendChild(unfundedStat);
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
@@ -173,7 +180,15 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
+let [topFundedGame, ...others] = sortedGames;
+let [firstPlace, runnerUp, ...rest] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+const topFundedGameName = document.createElement("p");
+topFundedGameName.innerHTML = `${topFundedGame.name}`;
+firstGameContainer.appendChild(topFundedGameName);
 
 // do the same for the runner up item
+const runnerUpGameName = document.createElement("p");
+runnerUpGameName.innerHTML = `${runnerUp.name}`;
+secondGameContainer.appendChild(runnerUpGameName);
