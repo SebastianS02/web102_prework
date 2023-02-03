@@ -26,9 +26,6 @@ Here's a walkthrough of implemented features:
 
 <img src='https://user-images.githubusercontent.com/96634770/216686629-f76cf579-f47f-48ff-9265-a9299fd213c8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/96634770/216686629-f76cf579-f47f-48ff-9265-a9299fd213c8.gif)
-
-
 GIF created with QuickTime Player and ezgif on MacOS
 
 ## Notes
